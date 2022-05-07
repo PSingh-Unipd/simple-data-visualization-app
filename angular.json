@@ -107,5 +107,8 @@
       }
     }
   },
-  "defaultProject": "simple-data-visualization-app"
+  "defaultProject": "simple-data-visualization-app",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
