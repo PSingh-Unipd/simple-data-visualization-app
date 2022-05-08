@@ -11,8 +11,8 @@ import { ITransaction } from 'src/app/features/epsrc-transactions/interfaces';
 export class TableComponent implements AfterViewInit, OnChanges {
   @Input() tableData: any[] = [];
   @Input() tableColumns: {displayHeader: string, objKey: string }[] = [];
-  @Input() paginationSize: number[] = [5, 10, 20];
-  @Input() cssClass: string = ''; // For custom table size 
+  @Input() paginationSize: number[] = [10, 20];
+  @Input() cssClass: string = ''; 
   @Input() showLoader: boolean = true;
 
   displayedColumns: string[] = [];

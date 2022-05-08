@@ -1,3 +1,15 @@
-.table {
-	max-width: 800px;
+.epsrc-transactions {
+	background-color: #FFFDFF;
+
+	&__form {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		padding: 20px 0;
+		
+		.mat-form-field {
+			width: 40%;
+		}
+	}
 }
+
