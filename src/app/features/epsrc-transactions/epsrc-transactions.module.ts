@@ -12,6 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ComponenetsModule } from 'src/app/shared/components/componenets.module';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { ComponenetsModule } from 'src/app/shared/components/componenets.module'
     ReactiveFormsModule,
     MatSelectModule,
     MatFormFieldModule,
-    ComponenetsModule
+    ComponenetsModule,
+    MatDividerModule
   ],
   providers: [TransactionsService]
 })

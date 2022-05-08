@@ -1,14 +1,15 @@
 .epsrc-transactions {
 	background-color: #FFFDFF;
-
+	padding: 20px;
 	&__form {
 		width: 100%;
 		display: flex;
 		justify-content: center;
 		padding: 20px 0;
-		
+
 		.mat-form-field {
 			width: 40%;
+			min-width: 280px;
 		}
 	}
 }
