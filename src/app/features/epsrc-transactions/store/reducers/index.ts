@@ -3,5 +3,5 @@ import { IEPSRCFeatureState } from "../../interfaces/feature-state/feature-state
 import { TransactionReducer } from './transactions/transactions.reducer';
 
 export const featureReducers: ActionReducerMap<IEPSRCFeatureState> = {
-	transactions: TransactionReducer
+  transactions: TransactionReducer
 }

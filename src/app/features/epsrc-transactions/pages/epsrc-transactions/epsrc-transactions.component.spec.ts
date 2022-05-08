@@ -10,7 +10,7 @@ describe('EpsrcTransactionsComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ EpsrcTransactionsComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

@@ -11,23 +11,26 @@ import { ITransaction } from 'src/app/features/epsrc-transactions/interfaces';
 export class TableComponent implements AfterViewInit, OnChanges {
   @Input() tableData: any[] = [];
   @Input() tableColumns: {displayHeader: string, objKey: string }[] = [];
-  @Input() isLoading: boolean = true;
+  @Input() paginationSize: number[] = [5, 10, 20];
+  @Input() cssClass: string = ''; // For custom table size 
+  @Input() showLoader: boolean = true;
+
   displayedColumns: string[] = [];
   dataSource!: MatTableDataSource<ITransaction>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
+  	this.dataSource.paginator = this.paginator;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.setupTableData();
+  	this.setupTableData();
   }
 
   private setupTableData(): void {
-    this.displayedColumns = this.tableColumns.map((currentValue) => currentValue.objKey);
-    this.dataSource = new MatTableDataSource<ITransaction>(this.tableData);
-    this.dataSource.paginator = this.paginator;
+  	this.displayedColumns = this.tableColumns.map((currentValue) => currentValue.objKey);
+  	this.dataSource = new MatTableDataSource<ITransaction>(this.tableData);
+  	this.dataSource.paginator = this.paginator;
   }
 }

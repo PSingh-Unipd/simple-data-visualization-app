@@ -6,11 +6,11 @@ import { ITransactionsReducerState } from '../../reducers/transactions/transacti
 const state: MemoizedSelector<object, IEPSRCFeatureState> = createFeatureSelector<IEPSRCFeatureState>('epsrc-transactions');
 
 export const getTransactions: (key: string) => MemoizedSelector<object, ITransaction[]> = (key: string) => createSelector<object, IEPSRCFeatureState, ITransaction[]>(
-	state,
-	(state) => state.transactions[key]
+  state,
+  (state) => state.transactions[key]
 );
 
 export const getAllTransactions: MemoizedSelector<object, ITransactionsReducerState> = createSelector<object, IEPSRCFeatureState, ITransactionsReducerState>(
-	state,
-	(state) => state.transactions
+  state,
+  (state) => state.transactions
 );

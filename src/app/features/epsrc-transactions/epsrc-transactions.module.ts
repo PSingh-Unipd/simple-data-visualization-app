@@ -15,25 +15,25 @@ import { ComponenetsModule } from 'src/app/shared/components/componenets.module'
 
 
 @NgModule({
-	declarations: [
-		EpsrcTransactionsComponent
-	],
-	imports: [
-		CommonModule,
-		HttpClientModule,
-		RouterModule.forChild([
-			{
-				path: '',
-				component: EpsrcTransactionsComponent
-			}
-		]),
-		StoreModule.forFeature('epsrc-transactions', featureReducers),
-		EffectsModule.forFeature(featureEffects),
-		ReactiveFormsModule,
-		MatSelectModule,
-		MatFormFieldModule,
-		ComponenetsModule
-	],
-	providers: [TransactionsService]
+  declarations: [
+    EpsrcTransactionsComponent
+  ],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    RouterModule.forChild([
+      {
+        path: '',
+        component: EpsrcTransactionsComponent
+      }
+    ]),
+    StoreModule.forFeature('epsrc-transactions', featureReducers),
+    EffectsModule.forFeature(featureEffects),
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    ComponenetsModule
+  ],
+  providers: [TransactionsService]
 })
 export class EpsrcTransactionsModule { }

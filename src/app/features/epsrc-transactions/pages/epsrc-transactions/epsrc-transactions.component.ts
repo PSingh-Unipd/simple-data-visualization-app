@@ -19,15 +19,15 @@ const tableColunmConfig : {displayHeader: string, objKey: string }[] = [
   { displayHeader: 'Amount', objKey: 'Amount' }, 
   { displayHeader: 'InvoiceCurrencyUnit', objKey: 'InvoiceCurrencyUnit' }];
 
-  const dataList: { viewValue: string, value: string }[] = [
-    { value: 'EPSRCSpendDataAug2016', viewValue: 'August 2016' },
-    { value: 'EPSRCSpendDataAug2015', viewValue: 'August 2015' },
-    { value: 'EPSRCSpendDataJuly2015', viewValue: 'July 2015' },
-    { value: 'EPSRCSpendDataJune2015', viewValue: 'June 2015' },
-    { value: 'EPSRCSpendDataApril2015', viewValue: 'April 2015' },
-    { value: 'EPSRCSpendDataDec2014', viewValue: 'December 2014' },
-    { value: 'EPSRCspendDataDec2013', viewValue: 'December 2013' }
-  ];
+const dataList: { viewValue: string, value: string }[] = [
+  { value: 'EPSRCSpendDataAug2016', viewValue: 'August 2016' },
+  { value: 'EPSRCSpendDataAug2015', viewValue: 'August 2015' },
+  { value: 'EPSRCSpendDataJuly2015', viewValue: 'July 2015' },
+  { value: 'EPSRCSpendDataJune2015', viewValue: 'June 2015' },
+  { value: 'EPSRCSpendDataApril2015', viewValue: 'April 2015' },
+  { value: 'EPSRCSpendDataDec2014', viewValue: 'December 2014' },
+  { value: 'EPSRCspendDataDec2013', viewValue: 'December 2013' }
+];
 
 @Component({
   selector: 'app-epsrc-transactions',

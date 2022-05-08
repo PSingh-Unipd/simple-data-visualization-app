@@ -7,14 +7,16 @@
 
 .wrapper {
 	position: relative;
-  height: 400px;
-  width: 100%;
-  overflow: auto;
+	height: 400px;
+	width: 100%;
+	overflow: auto;
+
 	table {
 		width: max-content;
-		
-		th, td {
+
+		th,
+		td {
 			padding: 0px 20px;
 		}
-	}	
+	}
 }

@@ -9,6 +9,6 @@ export interface ITransactionsReducerState {
 export const initialState: ITransactionsReducerState = {};
 
 export const TransactionReducer = createReducer(
-	initialState,
-	on(TransactionsActions.transactionsLoadingDone, (state, action) => ({ ...state, [action.key]: action.data }))
+  initialState,
+  on(TransactionsActions.transactionsLoadingDone, (state, action) => ({ ...state, [action.key]: action.data }))
 );

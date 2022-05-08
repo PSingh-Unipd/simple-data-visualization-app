@@ -1,4 +1,4 @@
-<div class="wrapper" *ngIf="dataSource">
+<div class="wrapper" *ngIf="dataSource" [ngClass]="cssClass">
 	<table mat-table [dataSource]="dataSource" [fixedLayout]="false">
 		<ng-container *ngFor="let column of tableColumns" [matColumnDef]="column.objKey">
 			<th mat-header-cell *matHeaderCellDef> {{ column.displayHeader }} </th>
@@ -13,5 +13,5 @@
     </div-->
 </div>
 
-<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+<mat-paginator [pageSizeOptions]="paginationSize" showFirstLastButtons>
 </mat-paginator>
