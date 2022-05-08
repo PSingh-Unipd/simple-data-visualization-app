@@ -2,6 +2,7 @@
 	background-color: #FFFDFF;
 	padding: 20px;
 	min-height: 90vh;
+
 	&__form {
 		width: 100%;
 		display: flex;
@@ -23,5 +24,13 @@
 		display: flex;
 		justify-content: center;
 		padding-top: 10px;
+	}
+
+	&__chart1-filter {
+		display: flex;
+		gap: 20px;
+		justify-content: center;
+		align-items: center;
+		padding: 10px;
 	}
 }

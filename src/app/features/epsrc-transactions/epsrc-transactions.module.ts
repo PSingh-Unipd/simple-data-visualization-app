@@ -16,6 +16,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import {MatTabsModule} from '@angular/material/tabs';
 import { PipesModule } from 'src/app/shared/pipes/pipes.module';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { PipesModule } from 'src/app/shared/pipes/pipes.module';
     ComponenetsModule,
     MatDividerModule,
     MatTabsModule,
+    MatInputModule,
     NgxChartsModule,
     PipesModule
   ],

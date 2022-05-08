@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { delay, filter, mergeMap, Subject, takeUntil, tap } from 'rxjs';
+import { debounce, debounceTime, delay, filter, mergeMap, Subject, takeUntil, tap } from 'rxjs';
 import { MapToArray, SumByPropertyName } from 'src/app/shared/functions';
 import { PieChartDataType } from 'src/app/shared/interfaces';
 import { ITransaction } from '../../interfaces';
@@ -36,16 +36,20 @@ const dataList: { viewValue: string, value: string }[] = [
 export class EpsrcTransactionsComponent implements OnInit, OnDestroy {
 
   filterControl: FormControl = new FormControl('');
+  test: FormControl = new FormControl(10);
   filterControlOptions: { viewValue: string, value: string }[] = dataList;
 
   transactions: ITransaction[] = [];
   tableColunms = tableColunmConfig;
   PieChartDataType = PieChartDataType;
+  maxNumber!: number;
   private readonly _destroy$: Subject<void> = new Subject<void>();
 
   constructor(private store: Store<IEPSRCFeatureState>) { }
 
   ngOnInit(): void {
+    this.test.valueChanges.pipe(debounceTime(1000),
+      takeUntil(this._destroy$)).subscribe(value => this.maxNumber = value)
     this.filterControl.valueChanges.pipe(
       delay(100),
       tap(value => this.store.dispatch(TransactionsActions.loadTransactions({ key: value }))),

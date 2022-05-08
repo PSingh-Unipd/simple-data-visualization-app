@@ -16,10 +16,18 @@
 				<app-table [tableData]="transactions" [tableColumns]="tableColunms"></app-table>
 			</div>
 		</mat-tab>
-		<mat-tab label="Amount per top supplier">
+		<mat-tab label="Amount top supplier">
+			<div class="epsrc-transactions__chart1-filter">
+				<p>Simple filter to show specific number of top Suppliers:</p>
+				<mat-form-field appearance="outline">
+					<mat-label>View top:</mat-label>
+					<input matInput type="number" [formControl]="test">
+				</mat-form-field>
+			</div>
 			<div class="epsrc-transactions__chart">
 				<ngx-charts-pie-chart 
-				[results]="(transactions | pieChartDataMapping : { byProperty: 'Supplier', valueProperty: 'Amount' }: PieChartDataType.sum: 10  )" 
+				[view]="[800, 400]"
+				[results]="(transactions | pieChartDataMapping : { byProperty: 'Supplier', valueProperty: 'Amount' }: PieChartDataType.sum: maxNumber  )" 
 				[labels]="true"  [legend]="true" [doughnut]="true">
 				</ngx-charts-pie-chart>
 			</div>
