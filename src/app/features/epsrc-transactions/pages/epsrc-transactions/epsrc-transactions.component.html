@@ -1,1 +1,13 @@
-<p>epsrc-transactions works!</p>
+<mat-form-field appearance="fill">
+	<mat-select [formControl]="filterControl">
+		<mat-option *ngFor="let item of filterControlOptions" [value]="item.value">
+			{{item.viewValue}}
+		</mat-option>
+	</mat-select>
+</mat-form-field>
+
+<ng-container *ngIf="(transactions$ | async) as transactions">
+	<div class="table">
+		<app-table [tableData]="transactions" [tableColumns]="tableColunms"></app-table>
+	</div>
+</ng-container>

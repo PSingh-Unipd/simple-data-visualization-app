@@ -1,7 +1,7 @@
 export interface ITransaction {
 	DepartmentFamily: string;
 	Entity: string;
-	Date: Date;
+	Date: string;
 	ExpenseType: string;
 	ExpenseArea: string;
 	Supplier: string;
