@@ -13,6 +13,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ComponenetsModule } from 'src/app/shared/components/componenets.module';
 import { MatDividerModule } from '@angular/material/divider';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import {MatTabsModule} from '@angular/material/tabs';
+import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 
 
 @NgModule({
@@ -34,7 +37,10 @@ import { MatDividerModule } from '@angular/material/divider';
     MatSelectModule,
     MatFormFieldModule,
     ComponenetsModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTabsModule,
+    NgxChartsModule,
+    PipesModule
   ],
   providers: [TransactionsService]
 })

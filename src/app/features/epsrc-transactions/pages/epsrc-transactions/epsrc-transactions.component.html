@@ -1,6 +1,6 @@
 <div class="epsrc-transactions">
 	<div class="epsrc-transactions__form">
-		<mat-form-field appearance="fill">
+		<mat-form-field appearance="outline">
 			<mat-label>Select transactions month</mat-label>
 			<mat-select [formControl]="filterControl">
 				<mat-option *ngFor="let item of filterControlOptions" [value]="item.value">
@@ -10,7 +10,20 @@
 		</mat-form-field>
 	</div>
 	<mat-divider></mat-divider>
-	<div class="epsrc-transactions__table">
-		<app-table [tableData]="transactions" [tableColumns]="tableColunms"></app-table>
-	</div>
+	<mat-tab-group>
+		<mat-tab label="Transactions">
+			<div class="epsrc-transactions__table">
+				<app-table [tableData]="transactions" [tableColumns]="tableColunms"></app-table>
+			</div>
+		</mat-tab>
+		<mat-tab label="Amount per top supplier">
+			<div class="epsrc-transactions__chart">
+				<ngx-charts-pie-chart 
+				[results]="(transactions | pieChartDataMapping : { byProperty: 'Supplier', valueProperty: 'Amount' }: PieChartDataType.sum: 10  )" 
+				[labels]="true"  [legend]="true" [doughnut]="true">
+				</ngx-charts-pie-chart>
+			</div>
+		</mat-tab>
+		<mat-tab label="Supplier"> Content 3 </mat-tab>
+	</mat-tab-group>
 </div>

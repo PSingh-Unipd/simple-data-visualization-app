@@ -1,6 +1,7 @@
 .epsrc-transactions {
 	background-color: #FFFDFF;
 	padding: 20px;
+	min-height: 90vh;
 	&__form {
 		width: 100%;
 		display: flex;
@@ -12,5 +13,15 @@
 			min-width: 280px;
 		}
 	}
-}
 
+	&__table {
+		padding-top: 10px;
+	}
+
+	&__chart {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		padding-top: 10px;
+	}
+}

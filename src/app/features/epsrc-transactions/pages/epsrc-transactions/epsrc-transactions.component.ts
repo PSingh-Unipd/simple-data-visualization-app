@@ -2,7 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { delay, filter, mergeMap, Subject, takeUntil, tap } from 'rxjs';
-import { SumByPropertyName } from 'src/app/shared/functions';
+import { MapToArray, SumByPropertyName } from 'src/app/shared/functions';
+import { PieChartDataType } from 'src/app/shared/interfaces';
 import { ITransaction } from '../../interfaces';
 import { IEPSRCFeatureState } from '../../interfaces/feature-state/feature-state.interface';
 import { TransactionsActions } from '../../store/actions';
@@ -39,7 +40,7 @@ export class EpsrcTransactionsComponent implements OnInit, OnDestroy {
 
   transactions: ITransaction[] = [];
   tableColunms = tableColunmConfig;
-
+  PieChartDataType = PieChartDataType;
   private readonly _destroy$: Subject<void> = new Subject<void>();
 
   constructor(private store: Store<IEPSRCFeatureState>) { }
@@ -51,10 +52,7 @@ export class EpsrcTransactionsComponent implements OnInit, OnDestroy {
       mergeMap(value => this.store.select(TranscationsSelectors.getTransactions(value))),
       filter((transactions: ITransaction[]) => transactions !== undefined),
       takeUntil(this._destroy$),
-    ).subscribe((data: ITransaction[]) => { 
-      this.transactions = data;
-      console.log('Testing', SumByPropertyName(data, { byProperty: 'Supplier', valueProperty: 'Amount' }));
-    });
+    ).subscribe((data: ITransaction[]) => this.transactions = data);
 
 
     this.filterControl.setValue('EPSRCSpendDataAug2015')
