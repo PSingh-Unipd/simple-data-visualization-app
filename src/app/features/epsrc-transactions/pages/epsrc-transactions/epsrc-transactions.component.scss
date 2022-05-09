@@ -1,7 +1,6 @@
 .epsrc-transactions {
 	background-color: #FFFDFF;
 	padding: 20px;
-	min-height: 90vh;
 
 	&__form {
 		width: 100%;
@@ -17,6 +16,7 @@
 
 	&__table {
 		padding-top: 10px;
+		height: 450px !important;
 	}
 
 	&__chart {

@@ -1,26 +1,38 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { MapToArray, SumByPropertyName, TopNValues } from '../../functions';
-import { IpieChartData, PieChartDataType } from '../../interfaces';
+import { SumByPropertyName } from '../../functions';
+import { IpieChartData } from '../../interfaces';
+
+export type SingleChartDataSortOrder = 'ascending' | 'descending';
 
 @Pipe({
-  name: 'pieChartDataMapping'
+  name: 'singleChartDataTransforming'
 })
-export class PieChartDataMappingPipe implements PipeTransform {
+export class SingleChartDataTransformingPipe implements PipeTransform {
 
-  transform<T>(dataArray: Array<T>, keys: { byProperty: string, valueProperty: string }, type: PieChartDataType, resultLenght?: number): IpieChartData[] {
-
+  transform<T>(dataArray: Array<T>, keys: { byProperty: string, valueProperty: string }, resultLenght?: number, sort?: SingleChartDataSortOrder): IpieChartData[] {
     if (dataArray.length === 0) {
       return [];
     }
 
-    if (type === PieChartDataType.sum) {
-      let result: Map<string, number> = SumByPropertyName(dataArray, keys);
+    // Mapping 
+    let map: Map<string, number> = SumByPropertyName(dataArray, keys);
 
-      if (resultLenght) {
-        result = TopNValues(result, resultLenght);
-      }
-      return Array.from(result, ([key, val]) => ({ name: key, value: val }));
+    // Sorting
+    switch (sort) {
+    case 'ascending':  
+      map = new Map([...map.entries()].sort((a, b) => a[1] - b[1]));     
+      break;
+    case 'descending':
+      map = new Map([...map.entries()].sort((a, b) => b[1] - a[1]));
+      break;
+    // case 'byDate': 
+    //   map = new Map(Array.from(map).sort(([a], [b]) => a.localeCompare(b)));
+    //   break;
+    default: 
+      break;
     }
-    return [];
+
+    // Genreting array based on resultLengh
+    return Array.from(map, ([key, val]) => ({ name: key, value: val })).slice(0, resultLenght && resultLenght < map.size ? resultLenght : map.size);
   }
 }

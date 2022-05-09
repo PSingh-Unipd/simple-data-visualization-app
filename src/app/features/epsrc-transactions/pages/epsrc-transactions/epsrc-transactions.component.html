@@ -16,22 +16,45 @@
 				<app-table [tableData]="transactions" [tableColumns]="tableColunms"></app-table>
 			</div>
 		</mat-tab>
-		<mat-tab label="Amount top supplier">
+		<mat-tab label="Amount Expense Types">
 			<div class="epsrc-transactions__chart1-filter">
-				<p>Simple filter to show specific number of top Suppliers:</p>
+				<p>(Simple filter) Display top expense types:</p>
 				<mat-form-field appearance="outline">
-					<mat-label>View top:</mat-label>
-					<input matInput type="number" [formControl]="test">
+					<mat-label>Element number:</mat-label>
+					<input matInput type="number" [formControl]="chart1Control">
 				</mat-form-field>
 			</div>
 			<div class="epsrc-transactions__chart">
-				<ngx-charts-pie-chart 
-				[view]="[800, 400]"
-				[results]="(transactions | pieChartDataMapping : { byProperty: 'Supplier', valueProperty: 'Amount' }: PieChartDataType.sum: maxNumber  )" 
-				[labels]="true"  [legend]="true" [doughnut]="true">
-				</ngx-charts-pie-chart>
+				<ngx-charts-bar-vertical
+				[view]="[1100, 400]"
+				[results]="(transactions | singleChartDataTransforming : { byProperty: 'Supplier', valueProperty: 'Amount' }: chart1MaxNumber: 'descending'  )" 
+				[legend]="true"
+				[xAxis]="true"
+				[yAxis]="true"
+				[legend]="true"
+				[showXAxisLabel]="true"
+				[showYAxisLabel]="true"
+				[yAxisLabel]="'Amount'"
+				(select)="onSelect($event)"
+				>
+				</ngx-charts-bar-vertical>
 			</div>
 		</mat-tab>
-		<mat-tab label="Supplier"> Content 3 </mat-tab>
+		<mat-tab label="Supplier"> 
+			<div class="epsrc-transactions__chart">
+				<ngx-charts-line-chart
+				[view]="[1100, 400]"
+				[results]="(transactions | chartMultiDataTransforming : { byProperty: 'Date', valueProperty: 'Amount', singleSeriesLabel: 'Daily amount' } )" 
+				[legend]="true"
+				[xAxis]="true"
+				[yAxis]="true"
+				[legend]="true"
+				[showXAxisLabel]="true"
+				[showYAxisLabel]="true"
+				[yAxisLabel]="'Amount'"
+				>
+				</ngx-charts-line-chart>
+			</div>
+		</mat-tab>
 	</mat-tab-group>
 </div>

@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PieChartDataMappingPipe } from './pie-chart-data-mapping.pipe/pie-chart-data-mapping.pipe';
-
+import { SingleChartDataTransformingPipe } from './pie-chart-data-mapping.pipe/pie-chart-data-mapping.pipe';
+import { ChartMultiDataTransformingPipe } from './chart-multi-data-transforming.pipe.spec/chart-multi-data-transforming.pipe';
 
 @NgModule({
   declarations: [
-    PieChartDataMappingPipe
+    SingleChartDataTransformingPipe,
+    ChartMultiDataTransformingPipe
   ],
   imports: [
     CommonModule
   ],
-  exports: [PieChartDataMappingPipe]
+  exports: [SingleChartDataTransformingPipe, ChartMultiDataTransformingPipe]
 })
 export class PipesModule { }
