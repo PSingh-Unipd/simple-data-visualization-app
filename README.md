@@ -14,7 +14,7 @@ ng serve
 npm run build --prod
 ```
 ### Demo
-https://simple-data-visualization-app.surge.sh/epsrc-transactions
+https://simple-data-visualization-app.surge.sh
 
 ### LICENSE 
 This project is licensed under the MIT License - see the LICENSE.md file for details
