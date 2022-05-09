@@ -23,6 +23,7 @@ const dataList: { viewValue: string, value: string }[] = [
   { value: 'EPSRCSpendDataAug2015', viewValue: 'August 2015' },
   { value: 'EPSRCSpendDataJuly2015', viewValue: 'July 2015' },
   { value: 'EPSRCSpendDataJune2015', viewValue: 'June 2015' },
+  { value: 'EPSRCSpendDataMay2015', viewValue: 'May 2015' },
   { value: 'EPSRCSpendDataApril2015', viewValue: 'April 2015' }
 ];
 

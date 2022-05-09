@@ -4,11 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'test',
+    redirectTo: 'epsrc-transactions',
     pathMatch: 'full'
   },
   {
-    path: 'test',
+    path: 'epsrc-transactions',
     loadChildren: () => import('./features/epsrc-transactions/epsrc-transactions.module').then(m => m.EpsrcTransactionsModule)
   }
 ];
