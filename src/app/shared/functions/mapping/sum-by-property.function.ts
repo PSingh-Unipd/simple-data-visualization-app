@@ -6,10 +6,10 @@ import { IChartPipeProperties } from "../../interfaces";
  * @param keyNames properties names (exemple { keyProperty: 'Supplier', valueProperty: 'Amount'} => sum of all amounts values by supplier)
  * @returns result is HashMap 
  */
-export function SumByPropertyName(array: Array<any>, keyNames: IChartPipeProperties): Map<string, number> {
+export function SumByPropertyName<T>(array: Array<T>, keyNames: IChartPipeProperties): Map<string, number> {
   const map: Map<string, number> = new Map<string, number>();
 
-  array.forEach((item) => {
+  array.forEach((item: any) => {
     const key = item[keyNames.keyProperty];
     const previousValue = map.get(key);
     if (!previousValue) {
