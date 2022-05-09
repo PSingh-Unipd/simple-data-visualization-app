@@ -16,43 +16,38 @@
 				<app-table [tableData]="transactions" [tableColumns]="tableColunms"></app-table>
 			</div>
 		</mat-tab>
-		<mat-tab label="Amount Expense Types">
-			<div class="epsrc-transactions__chart1-filter">
-				<p>(Simple filter) Display top expense types:</p>
+		<mat-tab label="Expenses type">
+			<div class="epsrc-transactions__chart1-form" [formGroup]="chart1Form">
 				<mat-form-field appearance="outline">
-					<mat-label>Element number:</mat-label>
-					<input matInput type="number" [formControl]="chart1Control">
+					<mat-label>Chart elements</mat-label>
+					<input matInput type="number" formControlName="maxNumberControl">
+				</mat-form-field>
+				<mat-form-field appearance="outline">
+					<mat-label>Chart elements sorting</mat-label>
+					<mat-select formControlName="sortingControl">
+						<mat-option [value]="'descending'">
+							descending
+						</mat-option>
+						<mat-option [value]="'ascending'">
+							ascending
+						</mat-option>
+					</mat-select>
 				</mat-form-field>
 			</div>
 			<div class="epsrc-transactions__chart">
-				<ngx-charts-bar-vertical
-				[view]="[1100, 400]"
-				[results]="(transactions | singleChartDataTransforming : { byProperty: 'Supplier', valueProperty: 'Amount' }: chart1MaxNumber: 'descending'  )" 
-				[legend]="true"
-				[xAxis]="true"
-				[yAxis]="true"
-				[legend]="true"
-				[showXAxisLabel]="true"
-				[showYAxisLabel]="true"
-				[yAxisLabel]="'Amount'"
-				(select)="onSelect($event)"
-				>
+				<ngx-charts-bar-vertical [view]="[1100, 400]"
+					[results]="(transactions | singleChartDataTransforming : { keyProperty: 'Supplier', valueProperty: 'Amount' } : chart1MaxNumber: chart1Form.value.sortingControl  )"
+					[legend]="true" [xAxis]="true" [yAxis]="true" [legend]="true" [showXAxisLabel]="true"
+					[showYAxisLabel]="true" [yAxisLabel]="'Amount'">
 				</ngx-charts-bar-vertical>
 			</div>
 		</mat-tab>
-		<mat-tab label="Supplier"> 
+		<mat-tab label="Daily Expenses">
 			<div class="epsrc-transactions__chart">
-				<ngx-charts-line-chart
-				[view]="[1100, 400]"
-				[results]="(transactions | chartMultiDataTransforming : { byProperty: 'Date', valueProperty: 'Amount', singleSeriesLabel: 'Daily amount' } )" 
-				[legend]="true"
-				[xAxis]="true"
-				[yAxis]="true"
-				[legend]="true"
-				[showXAxisLabel]="true"
-				[showYAxisLabel]="true"
-				[yAxisLabel]="'Amount'"
-				>
+				<ngx-charts-line-chart [view]="[1100, 400]"
+					[results]="(transactions | multiChartDataTransforming : [{ keyProperty: 'Date', valueProperty: 'Amount', label: 'Daily spend' }] )"
+					[legend]="true" [xAxis]="true" [yAxis]="true" [legend]="true" [showXAxisLabel]="true"
+					[showYAxisLabel]="true" [yAxisLabel]="'Amount'">
 				</ngx-charts-line-chart>
 			</div>
 		</mat-tab>

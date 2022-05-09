@@ -1,8 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { debounce, debounceTime, delay, filter, mergeMap, Subject, takeUntil, tap } from 'rxjs';
-import { PieChartDataType } from 'src/app/shared/interfaces';
+import { debounceTime, delay, filter, mergeMap, Subject, takeUntil, tap } from 'rxjs';
 import { ITransaction } from '../../interfaces';
 import { IEPSRCFeatureState } from '../../interfaces/feature-state/feature-state.interface';
 import { TransactionsActions } from '../../store/actions';
@@ -38,19 +37,21 @@ export class EpsrcTransactionsComponent implements OnInit, OnDestroy {
   filterControlOptions: { viewValue: string, value: string }[] = dataList;
 
   chart1MaxNumber: number = 10;
-  chart1Control: FormControl = new FormControl(this.chart1MaxNumber, [Validators.min(1)]);
+  chart1Form: FormGroup = new FormGroup({
+    maxNumberControl: new FormControl(this.chart1MaxNumber, [Validators.min(1)]),
+    sortingControl: new FormControl('descending')
+  });
   
   transactions: ITransaction[] = [];
   tableColunms = tableColunmConfig;
-  PieChartDataType = PieChartDataType;
   
   private readonly _destroy$: Subject<void> = new Subject<void>();
 
   constructor(private store: Store<IEPSRCFeatureState>) { }
 
   ngOnInit(): void {
-    this.chart1Control.valueChanges.pipe(
-      debounceTime(1000),
+    this.chart1Form.controls['maxNumberControl'].valueChanges.pipe(
+      debounceTime(500),
       filter((value) => value > 0),
       takeUntil(this._destroy$)
     ).subscribe((value: number) => this.chart1MaxNumber = value);
@@ -64,10 +65,6 @@ export class EpsrcTransactionsComponent implements OnInit, OnDestroy {
     ).subscribe((data: ITransaction[]) => this.transactions = data);
 
     this.filterControl.setValue('EPSRCSpendDataAug2015');
-  }
-
-  onSelect(event: any) {
-    console.log(event);
   }
 
   ngOnDestroy(): void {

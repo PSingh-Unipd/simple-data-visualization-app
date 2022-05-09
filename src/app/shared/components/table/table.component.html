@@ -2,7 +2,7 @@
 	<table mat-table [dataSource]="dataSource" [fixedLayout]="false">
 		<ng-container *ngFor="let column of tableColumns" [matColumnDef]="column.objKey">
 			<th mat-header-cell *matHeaderCellDef> {{ column.displayHeader }} </th>
-			<td mat-cell *matCellDef="let element" class="test"> {{ element[column.objKey] }} </td>
+			<td mat-cell *matCellDef="let element"> {{ element[column.objKey] }} </td>
 		</ng-container>
 		<tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
 		<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
